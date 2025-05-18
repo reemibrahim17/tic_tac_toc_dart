@@ -18,26 +18,37 @@ displayBoard(){
       print("---------");
     }
   }
-while(true){
-  print("chose aposition from 1 to 9 🥰");
+  }
+
+  
+ 
+  
+ move(position){
+  while(true){ 
+  
+   print("chose aposition from 1 to 9 🥰");
   int position=int.parse(stdin.readLineSync()!);
+  
   if(position <1 || position>9){
+    
     print("invalid position😕");
+    continue;
   }
   if(board[position-1] != " " ){
     print(" this positon is already filled 😕"); 
-  }
+    continue;
+  } //if you  found the right  position break the loop
   else{
     board[position-1]= currentPlayer;
-    if(currentPlayer=="x") {
-      currentPlayer="o";
-    } else {
-      currentPlayer="x";
-    }
+    break;
   }
+  }
+
 }
-}
-}
+
+ }
+
+
 void main(){
 TicTacToe game=TicTacToe();
 game.startGame();
