@@ -104,10 +104,16 @@ startGame() {
      else if(!board.contains(" ")){
       displayBoard();
       print("no one wins !😕")  ;
+    if(!playagain()){
+      break;
      }
     }
-    else{switchplayer();}
-
+  
+else{
+      switchplayer();
+    }
+  }
+  print("thanks for playing! 👋");
 
 
  }}}
