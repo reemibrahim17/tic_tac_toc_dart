@@ -19,10 +19,6 @@ displayBoard(){
     }
   }
   }
-
-  
- 
-  
  move(position){
   while(true){ 
   
@@ -43,9 +39,19 @@ displayBoard(){
     break;
   }
   }
-
 }
-
+bool playagain(){
+  print("do you like to play agaon? (y/n)");
+  String? result=stdin.readLineSync();
+  if(result=="y"){
+    List<String>board=[" "," "," "," ", " ", " ", " "," "," "];
+    currentPlayer="x";
+    return true;
+  }
+  else {
+    return false;
+  }
+}
  }
 
 
