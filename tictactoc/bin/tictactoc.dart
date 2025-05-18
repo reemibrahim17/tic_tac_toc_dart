@@ -4,13 +4,9 @@ class TicTacToe
  List<String>board=[" "," "," "," ", " ", " ", " "," "," "];
  String currentPlayer="x";
  
-  startGame(){
-    print("wlcome to Tic Tac Toe👋");
-    print("this gama is played by 2 players");
-    print("player 1 is X"); 
-    print("player 2 is O");
-    print("player 1 will start first"); 
-  }
+ 
+   
+  
 displayBoard(){
   for (int i = 0; i < 9; i+=3) {
    print("${board[i]} | ${board[i+1]} | ${board[i+2]}");
@@ -19,7 +15,7 @@ displayBoard(){
     }
   }
   }
- move(position){
+ move(){
   while(true){ 
   
    print("chose aposition from 1 to 9 🥰");
@@ -55,12 +51,69 @@ bool playagain(){
 void switchplayer(){
   currentPlayer=currentPlayer =="x"? "o":"x";
 }
- }
+
+bool checkWinner() {
+  // Rows
+  for (int i = 0; i < 9; i += 3) {
+    if (board[i] != " " &&
+        board[i] == board[i + 1] &&
+        board[i + 1] == board[i + 2]) {
+      return true;
+    }
+  }
+
+  // Columns
+  for (int i = 0; i < 3; i++) {
+    if (board[i] != " " &&
+        board[i] == board[i + 3] &&
+        board[i + 3] == board[i + 6]) {
+      return true;
+    }
+  }
+
+  // Diagonals
+  if (board[0] != " " && board[0] == board[4] && board[4] == board[8]) {
+    return true;
+  }
+  if (board[2] != " " && board[2] == board[4] && board[4] == board[6]) {
+    return true;
+  }
+
+  return false;
+}
+
+startGame() {
+   print("wlcome to Tic Tac Toe👋");
+    print("this gama is played by 2 players");
+    print("player 1 is X"); 
+    print("player 2 is O");
+    print("player 1 will start first"); 
+  
+  while (true) {
+    displayBoard();
+    move();
+    // Check for a winner after each move
+    if (checkWinner()) {
+      displayBoard();
+      print("player $currentPlayer wins! 🎉");
+     if(playagain()){
+      continue;
+     }
+    //تعادل 
+
+     else if(!board.contains(" ")){
+      displayBoard();
+      print("no one wins !😕")  ;
+     }
+    }
+    else{switchplayer();}
 
 
+
+ }}}
 void main(){
 TicTacToe game=TicTacToe();
 game.startGame();
-game.displayBoard();
+
 
 }
