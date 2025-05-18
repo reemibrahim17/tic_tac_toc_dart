@@ -52,6 +52,9 @@ bool playagain(){
     return false;
   }
 }
+void switchplayer(){
+  currentPlayer=currentPlayer =="x"? "o":"x";
+}
  }
 
 
