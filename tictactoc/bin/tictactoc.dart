@@ -1,8 +1,8 @@
-
+import 'dart:io';
 class TicTacToe
  {
  List<String>board=[" "," "," "," ", " ", " ", " "," "," "];
- String curreentPlayer="x";
+ String currentPlayer="x";
  
   startGame(){
     print("wlcome to Tic Tac Toe👋");
@@ -18,7 +18,24 @@ displayBoard(){
       print("---------");
     }
   }
-
+while(true){
+  print("chose aposition from 1 to 9 🥰");
+  int position=int.parse(stdin.readLineSync()!);
+  if(position <1 || position>9){
+    print("invalid position😕");
+  }
+  if(board[position-1] != " " ){
+    print(" this positon is already filled 😕"); 
+  }
+  else{
+    board[position-1]= currentPlayer;
+    if(currentPlayer=="x") {
+      currentPlayer="o";
+    } else {
+      currentPlayer="x";
+    }
+  }
+}
 }
 }
 void main(){
